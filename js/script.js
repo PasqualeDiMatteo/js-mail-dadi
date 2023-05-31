@@ -9,6 +9,9 @@ console.log("JSOK");
    - **Altrimenti**
      - Visualizza un messaggio di errore
 */
+const emailElement = document.getElementById("email-validation");
+const inputElement = document.getElementById("email");
+const button = document.getElementById("button");
 
 // List Mail
 
@@ -18,18 +21,23 @@ const registeredEmail = [
   "francesco@gmail.com",
 ];
 
-// Ask Mail
+let isValid = "";
 
-const emailUser = prompt("Inserisci la tua email", "marco@gmail.com").trim();
-console.log(emailUser);
+button.addEventListener("click", function () {
+  // Ask Mail
 
-// Validation
+  const emailUser = inputElement.value;
+  console.log(emailUser);
 
-let isValid = "L'email non è valida";
+  // Validation
 
-for (let i = 0; i < registeredEmail.length; i++) {
-  if (emailUser === registeredEmail[i]) {
-    isValid = "Benvenuto";
+  isValid = "L'email non è valida";
+
+  for (let i = 0; i < registeredEmail.length; i++) {
+    if (emailUser === registeredEmail[i]) {
+      isValid = "Benvenuto";
+    }
   }
-}
-console.log(isValid);
+
+  emailElement.innerText = isValid;
+});
